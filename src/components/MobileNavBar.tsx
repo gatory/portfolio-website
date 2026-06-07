@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function ComponentsPreview() {
+export default function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
 

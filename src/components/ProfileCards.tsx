@@ -13,7 +13,14 @@ export default function ProfileCard({ name, description, bgColor, route, profile
     return (
         <Link href={route} className="group flex flex-col items-center gap-3 md:gap-4">            
             <div className={`relative flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 ${bgColor} overflow-hidden rounded-xl border-4 border-transparent group-hover:border-white transition-all duration-200 shadow-md`}>
-                <Image src={profilePicDir} alt={`${name} profile`} fill className="object-cover" />
+                <Image 
+                    src={profilePicDir} 
+                    alt={`${name} profile`} 
+                    fill 
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px" 
+                />
                 
                 {/* Hover Mask */}
                 <div className="hidden sm:flex absolute inset-0 bg-black/75 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
