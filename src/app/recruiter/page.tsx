@@ -1,9 +1,9 @@
-import MobileNavbar from "@/components/MobileNavBar";
+import Navbar from "@/components/Navbar";
 
 export default function RecruiterProfile() {
     return (
         <main>
-            <MobileNavbar className="hidden sm:block"></MobileNavbar>
+            <Navbar />
         </main>
     )
 }
