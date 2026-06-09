@@ -10,9 +10,24 @@ export default function Navbar() {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const profiles = [
-    { name: "Recruiter", image: "/images/recruiter-profile.jpeg", route: "/recruiter", available: true },
-    { name: "Teammate", image: "/images/teammate-profile.jpeg", route: "/teammate", available: false },
-    { name: "Stalker", image: "/images/stalker-profile.jpeg", route: "/stalker", available: false },
+    {
+      name: "Recruiter",
+      image: "/images/recruiter-profile.jpeg",
+      route: "/recruiter",
+      available: true,
+    },
+    {
+      name: "Teammate",
+      image: "/images/teammate-profile.jpeg",
+      route: "/teammate",
+      available: false,
+    },
+    {
+      name: "Stalker",
+      image: "/images/stalker-profile.jpeg",
+      route: "/stalker",
+      available: true,
+    },
   ];
   const [selectedProfile, setSelectedProfile] = useState(profiles[0]);
 
@@ -91,8 +106,100 @@ export default function Navbar() {
           </h2>
         </div>
 
+        {/* Profile Selection Dropdown */}
+        <div className="px-6 mt-6">
+          <span className="text-xs font-semibold text-secondary uppercase tracking-widest mb-4 block">
+            Current Profile
+          </span>
+
+          <button
+            onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
+            className="flex items-center justify-start w-full p-2 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors focus:outline-none"
+          >
+            <div className="h-10 w-10 relative rounded-xl overflow-hidden shrink-0">
+              <Image
+                src={selectedProfile.image}
+                alt={selectedProfile.name}
+                fill
+                className="object-cover"
+                sizes="40px"
+              />
+            </div>
+            <span className="font-medium text-xl ml-4">
+              {selectedProfile.name}
+            </span>
+            <svg
+              className={`w-5 h-5 text-gray-400 transition-transform duration-200 ml-auto ${isProfileDropdownOpen ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+
+          <div
+            className={`flex flex-col gap-1 overflow-hidden transition-all duration-300 ease-in-out ${isProfileDropdownOpen ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}
+          >
+            {profiles.map((profile) => {
+              const isSelected = selectedProfile.name === profile.name;
+
+              const itemContent = (
+                <>
+                  <div className="h-10 w-10 relative rounded-xl overflow-hidden shrink-0">
+                    <Image
+                      src={profile.image}
+                      alt={profile.name}
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
+                  </div>
+
+                  <div className="flex flex-col flex-1 text-left">
+                    <span className="font-medium text-xl">{profile.name}</span>
+                    {!profile.available && (
+                      <span className="text-[10px] font-semibold text-accent/80 uppercase tracking-widest mt-0.5">
+                        TBD
+                      </span>
+                    )}
+                  </div>
+                </>
+              );
+
+              if (!profile.available) {
+                return (
+                  <div key={profile.name} className="flex items-center gap-4 px-2 opacity-50 cursor-not-allowed">
+                    {itemContent}
+                  </div>  
+                );
+              }
+
+              return (
+                <Link
+                  href={profile.route}
+                  key={profile.name}
+                  onClick={() => {
+                    setSelectedProfile(profile);
+                    setIsProfileDropdownOpen(false);
+                    toggleMenu();
+                  }}
+                  className={`flex items-center gap-4 px-2 py-2 hover:bg-white/5 transition-colors rounded-xl ${isSelected ? "text-accent bg-white/5" : "text-gray-300"}`}
+                >
+                  {itemContent}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Menu Links */}
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col justify-start mt-10">
           <ul className="flex flex-col gap-8 text-lg font-medium px-6">
             {sections.map((section) => (
               <li key={section.name} className="flex">
@@ -148,10 +255,12 @@ export default function Navbar() {
 
       {/* Desktop Right Side */}
       <div className="hidden md:flex items-center gap-4 relative">
-        <button 
+        <button
           onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
           className={`h-10 w-10 relative rounded-xl overflow-hidden shrink-0 hover:ring-2 hover:ring-accent/50 transition-all focus:outline-none ${
-            isProfileDropdownOpen ? "scale-110 ring-2 ring-accent/50" : "scale-100"
+            isProfileDropdownOpen
+              ? "scale-110 ring-2 ring-accent/50"
+              : "scale-100"
           }`}
         >
           <Image
@@ -167,14 +276,14 @@ export default function Navbar() {
         {/* Profile Dropdown Menu */}
         {isProfileDropdownOpen && (
           <>
-            <div 
-              className="fixed inset-0 z-40" 
-              onClick={() => setIsProfileDropdownOpen(false)} 
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setIsProfileDropdownOpen(false)}
             />
             <div className="absolute top-14 right-0 w-50 bg-[#141414] border border-white/10 rounded-xl shadow-2xl py-3 z-50 flex flex-col">
               {profiles.map((profile) => {
                 const isSelected = selectedProfile.name === profile.name;
-                
+
                 const itemContent = (
                   <>
                     <div className="h-10 w-10 relative rounded-xl overflow-hidden shrink-0">
@@ -187,7 +296,9 @@ export default function Navbar() {
                       />
                     </div>
                     <div className="flex flex-col flex-1 text-left">
-                      <span className="font-medium text-xl">{profile.name}</span>
+                      <span className="font-medium text-xl">
+                        {profile.name}
+                      </span>
                       {!profile.available && (
                         <span className="text-[10px] font-semibold text-accent/80 uppercase tracking-widest mt-0.5">
                           TBD
@@ -199,7 +310,10 @@ export default function Navbar() {
 
                 if (!profile.available) {
                   return (
-                    <div key={profile.name} className="flex items-center gap-4 px-5 py-3 opacity-50 cursor-not-allowed">
+                    <div
+                      key={profile.name}
+                      className="flex items-center gap-4 px-5 py-3 opacity-50 cursor-not-allowed"
+                    >
                       {itemContent}
                     </div>
                   );
