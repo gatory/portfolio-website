@@ -8,6 +8,7 @@ export default function ProfileSelection() {
             route: "/recruiter",
             bgColor: "bg-[#477CC0]",
             profilePicDir: "/images/recruiter-profile.jpeg",
+            available: true,
         },
         {
             title: "Teammate / Founder",
@@ -15,6 +16,7 @@ export default function ProfileSelection() {
             route: "/teammate",
             bgColor: "bg-[#96D49D]",
             profilePicDir: "/images/teammate-profile.jpeg",
+            available: false,
         },
         {
             title: "Stalker",
@@ -22,6 +24,7 @@ export default function ProfileSelection() {
             route: "/stalker",
             bgColor: "bg-[#7B46B4]",
             profilePicDir: "/images/stalker-profile.jpeg",
+            available: false,
         },
     ];
 
@@ -52,6 +55,7 @@ export default function ProfileSelection() {
             bgColor={pathway.bgColor}
             route={pathway.route}
             profilePicDir={pathway.profilePicDir}
+            available={pathway.available}
           />
         ))}
       </div>
