@@ -55,9 +55,9 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="absolute top-0 left-0 w-full bg-transparent flex items-center justify-between sm:justify-start sm:gap-20 p-8 sm:p-10 sm:pt-6 text-primary z-50">
+    <nav className="absolute top-0 left-0 w-full bg-transparent flex items-center justify-between lg:justify-start lg:gap-20 p-8 lg:p-10 lg:pt-6 text-primary z-50">
       {/* Logo shows on both */}
-      <h2 className="font-bebas text-4xl sm:text-5xl text-accent tracking-wider">
+      <h2 className="font-bebas text-4xl lg:text-5xl text-accent tracking-wider">
         Kuan.Code
       </h2>
 
@@ -65,7 +65,7 @@ export default function Navbar() {
       {/* Hamburger Button */}
       <button
         onClick={toggleMenu}
-        className="sm:hidden relative w-10 h-10 flex flex-col justify-center items-center z-50 focus:outline-none"
+        className="lg:hidden relative w-10 h-10 flex flex-col justify-center items-center z-50 focus:outline-none"
         aria-label="Toggle Menu"
       >
         <span
@@ -95,7 +95,7 @@ export default function Navbar() {
 
       {/* Mobile Right Leaf */}
       <div
-        className={`sm:hidden fixed top-0 right-0 h-screen w-[75vw] flex flex-col bg-[#141414] border-l border-white/8 transform transition-transform shadow-2xl duration-300 ease-in-out z-40 ${
+        className={`lg:hidden fixed top-0 right-0 h-screen w-[75vw] flex flex-col bg-[#141414] border-l border-white/8 transform transition-transform shadow-2xl duration-300 ease-in-out z-40 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -233,7 +233,7 @@ export default function Navbar() {
 
       {/* Desktop */}
       {/* Desktop Sections */}
-      <ul className="hidden sm:flex flex-auto h-full justify-start items-center gap-10 p-0 m-0 text-2xl font-medium text-secondary tracking-wide">
+      <ul className="hidden lg:flex flex-auto h-full justify-start items-center gap-10 lg:gap-16 p-0 m-0 text-2xl font-medium text-secondary tracking-wide">
         {sections.map((section) => (
           <li key={section.name} className="flex items-center justify-center">
             <a
@@ -254,7 +254,7 @@ export default function Navbar() {
       </ul>
 
       {/* Desktop Right Side */}
-      <div className="hidden sm:flex items-center gap-4 relative">
+      <div className="hidden lg:flex items-center gap-4 relative">
         <button
           onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
           className={`h-10 w-10 relative rounded-xl overflow-hidden shrink-0 hover:ring-2 hover:ring-accent/50 transition-all focus:outline-none ${
