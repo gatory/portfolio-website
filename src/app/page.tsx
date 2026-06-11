@@ -7,7 +7,7 @@ export default function ProfileSelection() {
             subtitle: "Skills, experience, & CV",
             route: "/recruiter",
             bgColor: "bg-[#477CC0]",
-            profilePicDir: "/images/recruiter-profile.jpeg",
+            profilePicDir: "/images/profile-pictures/recruiter-profile.jpeg",
             available: true,
         },
         {
@@ -15,7 +15,7 @@ export default function ProfileSelection() {
             subtitle: "Hackathons & big ideas",
             route: "/teammate",
             bgColor: "bg-[#96D49D]",
-            profilePicDir: "/images/teammate-profile.jpeg",
+            profilePicDir: "/images/profile-pictures/teammate-profile.jpeg",
             available: false,
         },
         {
@@ -23,7 +23,7 @@ export default function ProfileSelection() {
             subtitle: "Just curious, no judgement",
             route: "/stalker",
             bgColor: "bg-[#7B46B4]",
-            profilePicDir: "/images/stalker-profile.jpeg",
+            profilePicDir: "/images/profile-pictures/stalker-profile.jpeg",
             available: false,
         },
     ];

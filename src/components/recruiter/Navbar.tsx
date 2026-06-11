@@ -12,19 +12,19 @@ export default function Navbar() {
   const profiles = [
     {
       name: "Recruiter",
-      image: "/images/recruiter-profile.jpeg",
+      image: "/images/profile-pictures/recruiter-profile.jpeg",
       route: "/recruiter",
       available: true,
     },
     {
       name: "Teammate",
-      image: "/images/teammate-profile.jpeg",
+      image: "/images/profile-pictures/teammate-profile.jpeg",
       route: "/teammate",
       available: false,
     },
     {
       name: "Stalker",
-      image: "/images/stalker-profile.jpeg",
+      image: "/images/profile-pictures/stalker-profile.jpeg",
       route: "/stalker",
       available: false,
     },
